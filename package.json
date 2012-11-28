@@ -1,5 +1,5 @@
 {
-  "name": "RandomTile",
+  "name": "tileeye",
   "version": "0.0.0",
   "description": "Generates Random 256x256 images on http req",
   "main": "index.js",
