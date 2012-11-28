@@ -1,0 +1,15 @@
+{
+  "name": "RandomTile",
+  "version": "0.0.0",
+  "description": "Generates Random 256x256 images on http req",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Ben Evans <ben@bensbit.co.uk> (http://bensbit.co.uk)",
+  "license": "BSD",
+  "dependencies": {
+    "express": "~3.0.3"
+  }
+}
