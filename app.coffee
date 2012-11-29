@@ -4,11 +4,7 @@
 #
 
 http = require("http")
-Png = require("png").Png
 express = require("express")
-fs = require("fs")
-sys = require("sys")
-Buffer = require("buffer").Buffer
 Canvas = require("canvas")
 app = express()
 
