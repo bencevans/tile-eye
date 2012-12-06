@@ -7,7 +7,7 @@ http = require("http")
 express = require("express")
 Canvas = require("canvas")
 app = express()
-
+app.use express.static './public'
 #
 # Config
 #
@@ -26,8 +26,7 @@ rand256 = () ->
 # User/GUI Routes
 #
 
-app.get "/", (req, res, next) ->
-  res.send "Head over to /[text].png"
+# Find in ./public/index.html
 
 #
 # API/Activity/Do Stuff Routes
