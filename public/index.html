@@ -31,7 +31,7 @@
   map.addLayer(osm);
 
   // Add TileEye Layer
-  var tileEyeUrl='http://localhost:3000/{z}/{x}/{y}.png';
+  var tileEyeUrl= document.location.origin + '/{z}/{x}/{y}.png';
   var tileEyeAttrib='TileEye';
   var tileEye = new L.TileLayer(tileEyeUrl, {minZoom: 8, maxZoom: 12, attribution: tileEyeAttrib});   
   map.setView(new L.LatLng(51.3, 0.7),9);
