@@ -53,4 +53,7 @@ app.get "*.png", (req, res) ->
 # Listen Up
 #
 
-app.listen process.env.port or 3001
+port = process.env.port or 3000
+
+app.listen port
+console.log "TileEye Listening on Port " + port
