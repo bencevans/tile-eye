@@ -12,7 +12,7 @@ app.use express.static './public'
 # Config
 #
 
-textOpacity = 0.8
+textOpacity = 0.9
 
 #
 # Helpers
@@ -45,6 +45,11 @@ app.get "*.png", (req, res) ->
   ctx.lineTo 50, 102
   ctx.lineTo 50 + te.width, 102
   ctx.stroke()
+
+  ctx.rotate -0.1
+  ctx.lineWidth = 2;
+  ctx.strokeRect 0,0,256,256
+
   res.type "png"
   res.send canvas.toBuffer()
 
