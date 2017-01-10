@@ -1,22 +1,56 @@
 # TileEye
 
+> Little PNG Tile Server for debugging Slippy Maps.
 
-### Add to Leaflet.js
+## Install & Run
+
+**From Source** - requires git, nodejs, npm & libcairo2
+
+```
+$ git clone https://github.com/bencevans/TileEye.git
+$ cd TileEye
+$ npm install
+$ npm start
+```
+
+**From Docker (Source)** - requires git & docker
+
+```
+$ git clone https://github.com/bencevans/TileEye.git
+$ cd TileEye
+$ docker build -t bencevans/tile-eye
+$ docker run -p 3000:3000 bencevans/tile-eye
+```
+
+**From Docker (Registry)** - requires Docker
+
+```
+$ docker run -p 3000:3000 bencevans/tile-eye
+```
+
+
+
+## Adding Tiles to Web maps
+
+**Add to OpenLayers**
+
+```javascript
+let tileEyeLayer = new ol.layer.Tile({
+  source: new ol.source.XYZ({
+    url: 'http://[TILEEYE_HOST]/{z}/{x}/{y}.png'
+  })
+});
+map.addLayer(tileEyeLayer);
+```
+
+**Add to Leaflet.js**
 
 ```javascript
 L.tileLayer('http://[TILEEYE_HOST]/{z}/{x}/{y}.png', {
-  attribution: 'Map data © OpenStreetMap contributors'
+  attribution: 'TileEye'
 }).addTo(map);
 ```
 
-## Licence
+## License
 
-(The MIT Licence)
-
-Copyright (c) 2012 Ben Evans <ben@bensbit.co.uk>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+MIT © [Ben Evans](http://bencevans.io)
