@@ -35,9 +35,9 @@ const server = http.createServer((req, res) => {
 
     ctx.font = '20px Impact';
     ctx.fillStyle = `rgba(${rand256()}, ${rand256()}, ${rand256()}, ${TEXT_OPACITY})`;
-    ctx.fillText(req.url, 50, 100);
+    ctx.fillText(req.url.split('/').join('\n'), 50, 100);
     ctx.strokeStyle = `rgba(${rand256()}, ${rand256()}, ${rand256()}, ${TEXT_OPACITY})`;
-    te = ctx.measureText(req.path);
+    te = ctx.measureText(req.url.split('/').join('\n'));
     ctx.beginPath();
     ctx.lineTo(50, 102);
     ctx.lineTo(50 + te.width, 102);
