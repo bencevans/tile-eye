@@ -1,41 +1,29 @@
 const http = require('http');
-const Canvas = require('canvas');
+const fs = require('fs');
+const path = require('path');
+const { createCanvas } = require('canvas');
 
-//
-// Config
-//
-
-// PORT: Port the HTTP server should listen.
 const PORT = process.env.PORT || 3000;
 
-// TEXT_OPACITY: Opacity of text rendered on each tile.
 const TEXT_OPACITY = process.env.TEXT_OPACITY ?
   parseFloat(process.env.TEXT_OPACITY, 10) : 0.9;
 
+const html = fs.readFileSync(path.resolve(__dirname, 'public/index.html'))
 
-
-/**
- * Generate a random integer between 0 & 255
- * @return {Number}
- */
 const rand256 = () => {
   return Math.floor(Math.random() * 255);
 };
-
-//
-// Server
-//
 
 const server = http.createServer((req, res) => {
   if (req.url.match(/.+\.png/)) {
     res.writeHead(200, {'Content-Type': 'image/png'});
 
-    let canvas = new Canvas(256, 256);
-    let ctx = canvas.getContext('2d');
+    const canvas = createCanvas(256, 256);
+    const ctx = canvas.getContext('2d');
 
     ctx.font = '20px Impact';
     ctx.fillStyle = `rgba(${rand256()}, ${rand256()}, ${rand256()}, ${TEXT_OPACITY})`;
-    ctx.fillText(req.url.split('/').join('\n'), 50, 100);
+    ctx.fillText(req.url.substr(0, req.url.length - 4).split('/').join('\n'), 50, 100);
     ctx.strokeStyle = `rgba(${rand256()}, ${rand256()}, ${rand256()}, ${TEXT_OPACITY})`;
     te = ctx.measureText(req.url.split('/').join('\n'));
     ctx.beginPath();
@@ -48,8 +36,10 @@ const server = http.createServer((req, res) => {
 
     res.end(canvas.toBuffer(), 'binary');
   } else {
-    res.writeHead(404, {'Content-Type':'text/plain'})
-    res.end('TileEye. Try a URL /:z/:x/:y.png');
+    res.writeHead(200, {'Content-Type':'text/html'})
+    // res.end('TileEye. Try a URL /:z/:x/:y.png');
+    res.end(html)
+    
   }
 });
 
