@@ -10,6 +10,6 @@
   "author": "Ben Evans <ben@bensbit.co.uk> (http://bensbit.co.uk)",
   "license": "BSD",
   "dependencies": {
-    "canvas": "^2.5.0"
+    "canvas": "^2.11.2"
   }
 }
